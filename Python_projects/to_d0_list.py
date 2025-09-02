@@ -28,11 +28,15 @@ def view_tasks():
 
      
 #function to add completed tasks to the list.
-def completed_tasks(marked_task):
-    if tasks:
-     marked_tasks.append(marked_task)
-     print(f"Task {marked_task} completed.")
-     print(marked_tasks)
+def complete_task(task_to_mark):
+    global tasks
+    if task_to_mark in tasks:
+        global marked_tasks
+        marked_tasks.append(task_to_mark)
+        tasks.remove(task_to_mark)
+        print(f"Task ({task_to_mark}) completed.")
+    else:
+        print("This task does not exist. Have you created it before?")
      
 
 # def edit_tasks(task):
@@ -41,28 +45,30 @@ def completed_tasks(marked_task):
 # Infinite loop to keep the program running until user exits
 while True:
     print("\nOptions: 1. Add Task  2. Remove Task  3. View Tasks  4. Exit 5. Completed Tasks 6. Edit Tasks")
-    try:
+    # try:
     # Ask user for their choice
-     choice = input("Enter your choice: ").strip()
-    except:
-     print("W")
-    # if task.lower():
-    # for i in add_task:
-     if choice == '1' or "one":
+    choice = input("Enter your choice: ").strip()
+    if choice == '1':
         task = input("Enter task: ")
         add_task(task)
-     elif choice == '2':
+    elif choice == '2':
         task = input("Enter task to remove: ")
         remove_task(task)
-     elif choice == '3':
+    elif choice == '3':
         view_tasks()
     
-     elif choice == '4':
+    elif choice == '4':
         print("Exiting program. Have a productive day!")
         break
-     elif choice == '5':
-        input("Add completed tasks: ")
-        completed_tasks(marked_tasks)
-        
-     else:
+    elif choice == '5':
+     task_to_mark =   input("Add completed tasks: ")
+     complete_task(task_to_mark)
+    elif choice == '6':
+        print(view_tasks())
+        edited_task = input("Which task do you want to edit: ")  
+        # if edited_task == "":
+
+    else:
         print("Invalid choice! Please select a valid option.")
+
+    print("Completed Tasks:", marked_tasks)
