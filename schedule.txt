@@ -1,0 +1,2 @@
+These are the printed tasks: ['cram', 'shop']
+These are the completed tasks: ['river', 'eat', 'read']

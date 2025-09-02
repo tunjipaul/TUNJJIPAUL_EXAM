@@ -37,11 +37,18 @@ def complete_task(task_to_mark):
         print(f"Task ({task_to_mark}) completed.")
     else:
         print("This task does not exist. Have you created it before?")
-     
 
-# def edit_tasks(task):
-#     if tasks:
-#         return tasks.append(task)
+def edited_tasks(task_to_edit):
+    if task_to_edit in tasks:
+# print((tasks.index(task_to_edit)))
+            tasks.insert(tasks.index(task_to_edit), replacement)
+            tasks.remove(task_to_edit)
+
+            print(f"Task ({task_to_edit}) has been changed to ({replacement})")
+            view_tasks()
+    else: 
+            print("Task doesn't exist.")
+
 # Infinite loop to keep the program running until user exits
 while True:
     print("\nOptions: 1. Add Task  2. Remove Task  3. View Tasks  4. Exit 5. Completed Tasks 6. Edit Tasks")
@@ -64,10 +71,17 @@ while True:
      task_to_mark =   input("Add completed tasks: ")
      complete_task(task_to_mark)
     elif choice == '6':
-        print(view_tasks())
-        edited_task = input("Which task do you want to edit: ")  
-        # if edited_task == len(tasks):
+        view_tasks()
+        task_to_edit = input("Enter the name of the task you want to edit: ").strip()
+        replacement = input("Enter new task: ").strip()
+        edited_tasks(task_to_edit)
+          
+        
     else:
         print("Invalid choice! Please select a valid option.")
 
     print("Completed Tasks:", marked_tasks)
+
+    with open("schedule.txt", "w", encoding= "utf-8") as f:
+        f.write(f"These are the printed tasks: {str(tasks)}\n")
+        f.write(f"These are the completed tasks: {str(marked_tasks)}")
