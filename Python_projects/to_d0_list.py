@@ -66,8 +66,7 @@ while True:
     elif choice == '6':
         print(view_tasks())
         edited_task = input("Which task do you want to edit: ")  
-        # if edited_task == "":
-
+        # if edited_task == len(tasks):
     else:
         print("Invalid choice! Please select a valid option.")
 
