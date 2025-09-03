@@ -1,2 +1,2 @@
-These are the printed tasks: ['cram', 'shop']
-These are the completed tasks: ['river', 'eat', 'read']
+These are the printed tasks: ['greasing', 'flooring', 'shopping', 'shipping']
+These are the completed tasks: ['dancing', 'eat', 'chisom']
